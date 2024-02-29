@@ -1,4 +1,4 @@
-# This file was created by Krithik Sambathkumar
+# This file was created by Krithik Sambathkumar person
 
 # Importing Libaries
 import pygame as pg
