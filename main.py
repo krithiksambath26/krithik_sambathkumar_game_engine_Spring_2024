@@ -1,4 +1,4 @@
-# This file was created by Krithik S
+# This file was created by Krithik Sambathkumar
 
 # Importing Libaries
 import pygame as pg
@@ -26,6 +26,8 @@ class Game:
         self.load_data()
     def load_data(self):
         game_folder = path.dirname(__file__)
+        img = pg.image.load(path.join(img_folder, 'character.png')).convert.alpha()g_folder= path.join(game_folder,'images')
+        self.player_im
         self.map_data = []
     # With is context manager which prevents errors
         with open(path.join(game_folder, 'map.txt'), 'rt') as f:
@@ -40,7 +42,7 @@ class Game:
         self.all_sprites = pg.sprite.Group()
         self.walls = pg.sprite.Group()
         self.object2s = pg.sprite.Group()
-        
+        self.coins = pg.sprite.Group()
         #self.player = Player(self, 10, 10)
         #self.all_sprites.add(self.player)
     
@@ -53,9 +55,16 @@ class Game:
                     print("a wall at", row, col)
                     Wall(self, col, row)
                 if tile == 'p':
+                    self.playercol = col
+                    self.playerrow = row
                     self.player = Player(self, col, row)
+                if tile == 'P':
+                    Deathblock(self, col, row)
                 if tile == 'X':
                     object2(self, col ,row)
+                if tile == 'C':
+                    Coin(self,col,row)
+    
 
     #Used to run game 
     def run(self):
@@ -84,6 +93,15 @@ class Game:
              pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
         for y in range (0, HEIGHT, TILESIZE):
             pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
+            
+    def draw_text(self, surface, text, size, color, x, y):
+        font_name = pg.font.match_font('arial')
+        font = pg.font.Font(font_name, size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect()
+        text_rect.topleft = (x*TILESIZE,y*TILESIZE)
+        surface.blit(text_surface, text_rect)
+
     def draw(self):
         self.screen.fill(BGCOLOR)
         self.draw_grid()
