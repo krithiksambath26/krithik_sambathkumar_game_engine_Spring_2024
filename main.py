@@ -1,5 +1,9 @@
 # This file was created by Krithik Sambathkumar person
 
+#Game Goals:
+# Boss Fight, Collecting Coins, Start - End screen
+# 8 bit Venom Chasing player before player collects coins
+
 # Importing Libaries
 import pygame as pg
 from settings import *
@@ -25,9 +29,9 @@ class Game:
         #Will eventually store game info with this
         self.load_data()
     def load_data(self):
-        game_folder = path.dirname(__file__)
-        img = pg.image.load(path.join(img_folder, 'character.png')).convert.alpha()g_folder= path.join(game_folder,'images')
-        self.player_im
+        #game_folder = path.dirname(__file__)
+        #img = pg.image.load(path.join(img_folder, 'character.png')).convert.alpha()g_folder= path.join(game_folder,'images')
+        #self.player_im
         self.map_data = []
     # With is context manager which prevents errors
         with open(path.join(game_folder, 'map.txt'), 'rt') as f:
