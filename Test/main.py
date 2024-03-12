@@ -1,7 +1,7 @@
 # This file was created by Krithik Sambathkumar person
 
 #Game Goals:
-# Boss Fight, Collecting Coins, Start - End screen
+# Boss level, Collecting Coins, Start - End screen
 # 8 bit Venom Chasing player before player collects coins
 
 # Importing Libaries
