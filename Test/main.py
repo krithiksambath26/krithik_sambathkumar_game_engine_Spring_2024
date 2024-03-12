@@ -51,7 +51,7 @@ class Game:
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'images')
         self.player_img = pg.image.load(path.join(img_folder, 'venom.png')).convert_alpha()
-        self.Mob_img = pg.image.load(path.join(img_folder, 'venom.png')).convert_alpha()
+        #self.Mob_img = pg.image.load(path.join(img_folder, 'venom.png')).convert_alpha()
         self.map_data = []
         
         with open(path.join(game_folder, 'map.txt'), 'rt') as f:
@@ -120,8 +120,11 @@ class Game:
             self.screen.fill(BGCOLOR)
             self.draw_grid()
             self.all_sprites.draw(self.screen)
-            self.draw_text(self.screen, str(self.test_timer.countdown(45)), 24, WHITE, WIDTH/2 - 32, 2)
+            self.draw_text(self.screen, "Time " + str(self.test_timer.countdown(45)), 24, WHITE, WIDTH/2 - 32, 2)
+            self.draw_text(self.screen, "Score " + str (self.player.moneybag),24, WHITE, WIDTH/2 - 32,30)
             pg.display.flip()
+
+
 
     def events(self):
          for event in pg.event.get():
