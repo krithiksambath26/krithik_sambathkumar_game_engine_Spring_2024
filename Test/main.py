@@ -51,7 +51,9 @@ class Game:
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'images')
         self.player_img = pg.image.load(path.join(img_folder, 'venom.png')).convert_alpha()
-        #self.Mob_img = pg.image.load(path.join(img_folder, 'venom.png')).convert_alpha()
+        self.mob_img = pg.image.load(path.join(img_folder, 'carnage.png')).convert_alpha()
+        self.wall_img = pg.image.load(path.join(img_folder, 'floor1.png')).convert_alpha()
+        self.powerup_img = pg.image.load(path.join(img_folder, 'powerup.png')).convert_alpha()
         self.map_data = []
         
         with open(path.join(game_folder, 'map.txt'), 'rt') as f:
