@@ -1,6 +1,7 @@
 # This file was created by Krithik Sambathkumar person
 
 #Game Goals:
+# 3 Features: Start, End Screen, Added graphics (DONE), Coin counter and Timer (Done)
 # Boss level, Collecting Coins, Start - End screen
 # 8 bit Venom Chasing player before player collects coins
 
@@ -48,9 +49,11 @@ class Game:
     def load_data(self):
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'images')
+        self.background_img = pg.image.load(path.join(img_folder, 'bg.png')).convert_alpha()
+        self.background_rect = self.background_img.get_rect()
         self.player_img = pg.image.load(path.join(img_folder, 'venom.png')).convert_alpha()
         self.mob_img = pg.image.load(path.join(img_folder, 'carnage.png')).convert_alpha()
-        self.wall_img = pg.image.load(path.join(img_folder, 'floor1.png')).convert_alpha()
+        self.wall_img = pg.image.load(path.join(img_folder, 'floor2.png')).convert_alpha()
         self.coin_img = pg.image.load(path.join(img_folder, 'coin.png')).convert_alpha()
         self.powerup_img = pg.image.load(path.join(img_folder, 'powerup.png')).convert_alpha()
         self.map_data = []
@@ -117,6 +120,10 @@ class Game:
     
     def draw(self):
             self.screen.fill(BGCOLOR)
+            self.screen.blit(self.background_img, self.background_rect)
+            # game_folder = path.dirname(__file__)
+            # img_folder = path.join(game_folder, 'images')
+            # self.screen = pg.image.load(path.join(img_folder, 'bg.png')).convert_alpha()
             self.draw_grid()
             self.all_sprites.draw(self.screen)
             self.draw_text(self.screen, "Time " + str(self.test_timer.countdown(45)), 24, BLACK, WIDTH/2 - 32, 2)
@@ -138,12 +145,39 @@ class Game:
             #         self.player.move(dy=-1)
             #     if event.key == pg.K_DOWN:
             #         self.player.move(dy=1)
+                
+    def show_start_screen(self):
+        self.screen.fill(BGCOLOR)
+        self.draw_text(self.screen, "This is the start screen - press any key to play", 24, WHITE, WIDTH/2, HEIGHT/2)
+        pg.display.flip()
+        self.wait_for_key()
+    def show_go_screen(self):
+        if not self.running:
+            return
+        self.screen.fill(BGCOLOR)
+        self.draw_text(self.screen, "This is the GO screen - press any key to play", 24, WHITE, WIDTH/2, HEIGHT/2)
+        pg.display.flip()
+        self.wait_for_key()
+
+    def wait_for_key(self):
+        waiting = True
+        while waiting:
+            self.clock.tick(FPS)
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    waiting = False
+                    self.quit()
+                if event.type == pg.KEYUP:
+                    waiting = False
 
 g = Game()
+
+g.show_start_screen()
 
 while True:
     g.new()
     g.run()
+
 
 
 

@@ -144,7 +144,8 @@ class PowerUp(pg.sprite.Sprite):
         #self.y = y
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
-# Mob Class       
+# Mob Class    
+                     
 class Mob(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.mobs
@@ -160,6 +161,7 @@ class Mob(pg.sprite.Sprite):
         self.x = x * TILESIZE
         self.y = y * TILESIZE
         self.speed = 1
+
     def collide_with_walls(self, dir):
         if dir == 'x':
             # print('colliding on the x')
@@ -191,7 +193,10 @@ class Mob(pg.sprite.Sprite):
         self.rect.y = self.y
         self.collide_with_walls('y')
 
+ 
 
+#____________________________________________________________________________________________
+        
 # class Mob(pg.sprite.Sprite):
 #     def __init__(self, game, x, y):
 #         self.groups = game.all_sprites, game.mobs
