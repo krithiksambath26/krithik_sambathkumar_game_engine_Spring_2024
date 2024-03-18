@@ -9,6 +9,7 @@ from random import choice
 
 vec = pg.math.Vector2
 
+#Player Class
 class Player(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites
@@ -101,7 +102,7 @@ class Player(pg.sprite.Sprite):
         # coin_hits = pg.sprite.spritecollide(self.game.coins, True)
         # if coin_hits:
         #     print("I got a coin")
-        
+# Wall Class     
 class Wall(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.walls
@@ -143,7 +144,7 @@ class PowerUp(pg.sprite.Sprite):
         #self.y = y
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
-        
+# Mob Class       
 class Mob(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.mobs

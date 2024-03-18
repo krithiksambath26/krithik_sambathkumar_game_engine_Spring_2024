@@ -4,7 +4,6 @@
 # Boss level, Collecting Coins, Start - End screen
 # 8 bit Venom Chasing player before player collects coins
 
-# Importing Libaries
 
 import pygame as pg
 from settings import *
@@ -15,7 +14,7 @@ from os import path
 
 from math import floor
 
-# Timer Class
+# Added Timer Class 
 class Cooldown():
     def __init__(self):
         self.current_time = 0
@@ -148,6 +147,8 @@ while True:
 
 
 
+# Letter assignments per Enitity: 
+    
 #C = coin
 #1 = wall
 #P = player
