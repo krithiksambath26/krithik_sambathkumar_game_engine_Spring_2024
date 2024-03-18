@@ -15,9 +15,8 @@ from os import path
 
 from math import floor
 
-# this 'cooldown' class is designed to help us control time
+# class created for timer
 class Cooldown():
-    # sets all properties to zero when instantiated...
     def __init__(self):
         self.current_time = 0
         self.event_time = 0
@@ -46,13 +45,14 @@ class Game:
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         self.load_data()
-        #images folder and image in the load_data method for use with the player
+        #images folder and images in the load_data method for use with the player
     def load_data(self):
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'images')
         self.player_img = pg.image.load(path.join(img_folder, 'venom.png')).convert_alpha()
         self.mob_img = pg.image.load(path.join(img_folder, 'carnage.png')).convert_alpha()
         self.wall_img = pg.image.load(path.join(img_folder, 'floor1.png')).convert_alpha()
+        self.coin_img = pg.image.load(path.join(img_folder, 'coin.png')).convert_alpha()
         self.powerup_img = pg.image.load(path.join(img_folder, 'powerup.png')).convert_alpha()
         self.map_data = []
         
@@ -122,8 +122,8 @@ class Game:
             self.screen.fill(BGCOLOR)
             self.draw_grid()
             self.all_sprites.draw(self.screen)
-            self.draw_text(self.screen, "Time " + str(self.test_timer.countdown(45)), 24, WHITE, WIDTH/2 - 32, 2)
-            self.draw_text(self.screen, "Score " + str (self.player.moneybag),24, WHITE, WIDTH/2 - 32,30)
+            self.draw_text(self.screen, "Time " + str(self.test_timer.countdown(45)), 24, BLACK, WIDTH/2 - 32, 2)
+            self.draw_text(self.screen, "Score " + str (self.player.moneybag),24, BLACK, WIDTH/2 - 32,30)
             pg.display.flip()
 
 
