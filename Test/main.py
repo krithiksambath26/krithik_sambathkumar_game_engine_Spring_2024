@@ -15,7 +15,7 @@ from os import path
 
 from math import floor
 
-# class created for timer
+# Timer Class
 class Cooldown():
     def __init__(self):
         self.current_time = 0
@@ -37,7 +37,7 @@ class Cooldown():
         self.current_time = floor((pg.time.get_ticks())/1000)
 
 
-# Game Class
+#Class Game
 class Game:
     def __init__(self):
         pg.init()
@@ -69,9 +69,7 @@ class Game:
         self.coins = pg.sprite.Group()
         self.mobs = pg.sprite.Group()
         self.power_ups = pg.sprite.Group()
-        # self.player1 = Player(self, 1, 1)
-        # for x in range(10, 20):
-        #     Wall(self, x, 5)
+
         for row, tiles in enumerate(self.map_data):
             print(row)
             for col, tile in enumerate(tiles):
@@ -142,14 +140,12 @@ class Game:
             #     if event.key == pg.K_DOWN:
             #         self.player.move(dy=1)
 
-# Instantiate the game... 
 g = Game()
-# use game method run to run
-# g.show_start_screen()
+
 while True:
     g.new()
     g.run()
-    # g.show_go_screen()
+
 
 
 #C = coin

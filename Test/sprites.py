@@ -7,7 +7,7 @@ import pygame as pg
 from settings import *
 from random import choice
 
-vec =pg.math.Vector2
+vec = pg.math.Vector2
 
 class Player(pg.sprite.Sprite):
     def __init__(self, game, x, y):
