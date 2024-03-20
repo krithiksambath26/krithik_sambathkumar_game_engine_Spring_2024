@@ -84,7 +84,8 @@ class Player(pg.sprite.Sprite):
             if str(hits[0].__class__.__name__) == "PowerUp":
                 print(hits[0].__class__.__name__)
                 self.speed += 300
-
+            #if self.moneybag == 2:
+               # sys.exit()
     def update(self):
         self.get_keys()
         self.x += self.vx * self.game.dt
@@ -109,6 +110,20 @@ class Wall(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.image = game.wall_img
+        #self.image = pg.Surface((TILESIZE, TILESIZE))
+        #self.image.fill(BLUE)
+        self.rect = self.image.get_rect()
+        #self.x = x
+        #self.y = y
+        self.rect.x = x * TILESIZE
+        self.rect.y = y * TILESIZE
+
+class Wall2(pg.sprite.Sprite):
+    def __init__(self, game, x, y):
+        self.groups = game.all_sprites, game.walls
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.image = game.wall2_img
         #self.image = pg.Surface((TILESIZE, TILESIZE))
         #self.image.fill(BLUE)
         self.rect = self.image.get_rect()

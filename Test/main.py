@@ -53,7 +53,8 @@ class Game:
         self.background_rect = self.background_img.get_rect()
         self.player_img = pg.image.load(path.join(img_folder, 'venom.png')).convert_alpha()
         self.mob_img = pg.image.load(path.join(img_folder, 'carnage.png')).convert_alpha()
-        self.wall_img = pg.image.load(path.join(img_folder, 'floor2.png')).convert_alpha()
+        self.wall_img = pg.image.load(path.join(img_folder, 'floor4.png')).convert_alpha()
+        self.wall2_img = pg.image.load(path.join(img_folder, 'floor2.png')).convert_alpha()
         self.coin_img = pg.image.load(path.join(img_folder, 'coin.png')).convert_alpha()
         self.powerup_img = pg.image.load(path.join(img_folder, 'powerup.png')).convert_alpha()
         self.map_data = []
@@ -79,6 +80,9 @@ class Game:
                 if tile == '1':
                     print("a wall at", row, col)
                     Wall(self, col, row)
+                if tile == '2':
+                    print("a wall2 at", row, col)
+                    Wall2(self, col, row)
                 if tile == 'P':
                     self.player = Player(self, col, row)
                 if tile == 'C':
@@ -124,7 +128,7 @@ class Game:
             # game_folder = path.dirname(__file__)
             # img_folder = path.join(game_folder, 'images')
             # self.screen = pg.image.load(path.join(img_folder, 'bg.png')).convert_alpha()
-            self.draw_grid()
+            #self.draw_grid()
             self.all_sprites.draw(self.screen)
             self.draw_text(self.screen, "Time " + str(self.test_timer.countdown(45)), 24, BLACK, WIDTH/2 - 32, 2)
             self.draw_text(self.screen, "Score " + str (self.player.moneybag),24, BLACK, WIDTH/2 - 32,30)
@@ -185,7 +189,10 @@ while True:
     
 #C = coin
 #1 = wall
+#2 = wall2
 #P = player
 #U = Powerup
 #. = empty space
 #M = mob
+    
+
