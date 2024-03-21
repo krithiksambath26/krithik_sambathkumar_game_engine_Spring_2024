@@ -102,7 +102,7 @@ class Player(pg.sprite.Sprite):
                 self.screen.fill(BGCOLOR)
                 self.moneybag += -1
                 self.wait_for_key()
-                #sys.exit(0)
+                ##sys.exit(0)
             if str(hits[0].__class__.__name__) == "Mob2":
                 self.moneybag += -1
                 sys.exit(0)
