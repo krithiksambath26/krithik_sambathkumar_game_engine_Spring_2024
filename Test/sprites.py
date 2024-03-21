@@ -73,14 +73,36 @@ class Player(pg.sprite.Sprite):
                 self.vy = 0
                 self.rect.y = self.y
     
+
+    def wait_for_key(self):
+        waiting = True
+        while waiting:
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    waiting = False
+                    self.quit()
+                if event.type == pg.KEYUP:
+                    waiting = False
+
+    def draw_text(self, surface, text, size, color, x, y):
+        font_name = pg.font.match_font('arial')
+        font = pg.font.Font(font_name, size)
+        text_surface = font.render(text, True, color)
+        text_rect = text_surface.get_rect()
+        text_rect.topleft = (x,y)
+        surface.blit(text_surface, text_rect)
+
     def collide_with_group(self, group, kill):
         hits = pg.sprite.spritecollide(self, group, kill)
         if hits:
             if str(hits[0].__class__.__name__) == "Coin":
                 self.moneybag += 1
             if str(hits[0].__class__.__name__) == "Mob":
+                self.screen = pg.display.set_mode((WIDTH, HEIGHT))
+                self.screen.fill(BGCOLOR)
                 self.moneybag += -1
-                sys.exit(0)
+                self.wait_for_key()
+                #sys.exit(0)
             if str(hits[0].__class__.__name__) == "Mob2":
                 self.moneybag += -1
                 sys.exit(0)
@@ -90,6 +112,7 @@ class Player(pg.sprite.Sprite):
             if self.moneybag == 10:
                sys.exit()
                print("YOU WON")
+
     def update(self):
         self.get_keys()
         self.x += self.vx * self.game.dt
