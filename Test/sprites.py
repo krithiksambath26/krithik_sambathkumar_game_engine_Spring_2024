@@ -27,6 +27,7 @@ class Player(pg.sprite.Sprite):
         self.moneybag = 0
         self.speed = 300
     
+    #Player Controls
     def get_keys(self):
         self.vx, self.vy = 0, 0 
         keys = pg.key.get_pressed()
@@ -52,7 +53,8 @@ class Player(pg.sprite.Sprite):
     #         if wall.x == self.x + dx and wall.y == self.y + dy:
     #             return True
     #     return False
-            
+
+    # Collisions function     
     def collide_with_walls(self, dir):
         if dir == 'x':
             hits = pg.sprite.spritecollide(self, self.game.walls, False)
@@ -92,6 +94,7 @@ class Player(pg.sprite.Sprite):
         text_rect.topleft = (x,y)
         surface.blit(text_surface, text_rect)
 
+    # Backbone of Coint Counter and Timer functions
     def collide_with_group(self, group, kill):
         hits = pg.sprite.spritecollide(self, group, kill)
         if hits:
@@ -141,6 +144,7 @@ class Wall(pg.sprite.Sprite):
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
 
+# Second Wall Class
 class Wall2(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.walls
@@ -155,6 +159,7 @@ class Wall2(pg.sprite.Sprite):
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
 
+# Coin Class
 class Coin(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.coins
@@ -169,6 +174,7 @@ class Coin(pg.sprite.Sprite):
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
 
+# Powerup Class
 class PowerUp(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.power_ups
@@ -182,8 +188,8 @@ class PowerUp(pg.sprite.Sprite):
         #self.y = y
         self.rect.x = x * TILESIZE
         self.rect.y = y * TILESIZE
+
 # Mob Class    
-                     
 class Mob(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.mobs
@@ -218,6 +224,7 @@ class Mob(pg.sprite.Sprite):
         self.x += self.vx * self.game.dt
         self.y += self.vy * self.game.dt
 
+        #To chase player
         if self.rect.x < self.game.player.rect.x:
             self.vx = 100
         if self.rect.x > self.game.player.rect.x:
@@ -231,7 +238,7 @@ class Mob(pg.sprite.Sprite):
         self.rect.y = self.y
         self.collide_with_walls('y')
 
-                     
+   #Second Boss Mob                  
 class Mob2(pg.sprite.Sprite):
     def __init__(self, game, x, y):
         self.groups = game.all_sprites, game.mobs
@@ -246,7 +253,7 @@ class Mob2(pg.sprite.Sprite):
         self.vx, self.vy = 100, 100
         self.x = x * TILESIZE
         self.y = y * TILESIZE
-        self.speed = 1
+        self.speed = 1000
 
     def collide_with_walls(self, dir):
         if dir == 'x':

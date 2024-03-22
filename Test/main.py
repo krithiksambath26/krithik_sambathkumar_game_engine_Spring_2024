@@ -1,9 +1,9 @@
-# This file was created by Krithik Sambathkumar person
+# This file was created by Krithik Sambathkumar 
 
 #Game Goals:
-# 3 Features: Start, End Screen, Added graphics (DONE), Coin counter and Timer (Done)
-# Boss level, Collecting Coins, Start - End screen
-# 8 bit Venom Chasing player before player collects coins
+# 3 Features: Start Screen (DONE) Added graphics (DONE), Coin counter and Timer (Done)
+
+# 8 bit Venom and other enemies chasing player before player collects coins
 
 
 import pygame as pg
@@ -45,7 +45,7 @@ class Game:
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         self.load_data()
-        #images folder and images in the load_data method for use with the player
+        #images folder; calling folder to use imported png's with mobs
     def load_data(self):
         game_folder = path.dirname(__file__)
         img_folder = path.join(game_folder, 'images')
@@ -73,6 +73,7 @@ class Game:
         self.mobs = pg.sprite.Group()
         self.power_ups = pg.sprite.Group()
 
+        #Assing Mobs and Walls a symbol to correlate to map
         for row, tiles in enumerate(self.map_data):
             print(row)
             for col, tile in enumerate(tiles):
@@ -107,12 +108,14 @@ class Game:
         self.test_timer.ticking()
         self.all_sprites.update()
     
+    #Creating the Playing Screen
     def draw_grid(self):
          for x in range(0, WIDTH, TILESIZE):
               pg.draw.line(self.screen, LIGHTGREY, (x, 0), (x, HEIGHT))
          for y in range(0, HEIGHT, TILESIZE):
               pg.draw.line(self.screen, LIGHTGREY, (0, y), (WIDTH, y))
     
+    #Text Settings
     def draw_text(self, surface, text, size, color, x, y):
         font_name = pg.font.match_font('arial')
         font = pg.font.Font(font_name, size)
@@ -121,6 +124,7 @@ class Game:
         text_rect.topleft = (x,y)
         surface.blit(text_surface, text_rect)
     
+    #Instantiating Game Screen
     def draw(self):
             self.screen.fill(BGCOLOR)
             self.screen.blit(self.background_img, self.background_rect)
@@ -148,7 +152,8 @@ class Game:
             #         self.player.move(dy=-1)
             #     if event.key == pg.K_DOWN:
             #         self.player.move(dy=1)
-                
+
+    # Start Screen Function            
     def show_start_screen(self):
         self.screen.fill(BGCOLOR)
         self.draw_text(self.screen, "This is the start screen - press any key to play", 24, WHITE, WIDTH/2, HEIGHT/2)
@@ -181,7 +186,6 @@ g.show_start_screen()
 while True:
     g.new()
     g.run()
-
 
 
 

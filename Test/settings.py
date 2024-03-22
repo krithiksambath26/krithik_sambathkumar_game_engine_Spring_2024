@@ -1,3 +1,5 @@
+#Settings for Game
+
 WIDTH = 1024
 HEIGHT = 768
 
