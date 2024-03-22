@@ -98,11 +98,7 @@ class Player(pg.sprite.Sprite):
             if str(hits[0].__class__.__name__) == "Coin":
                 self.moneybag += 1
             if str(hits[0].__class__.__name__) == "Mob":
-                self.screen = pg.display.set_mode((WIDTH, HEIGHT))
-                self.screen.fill(BGCOLOR)
-                self.moneybag += -1
-                self.wait_for_key()
-                ##sys.exit(0)
+                sys.exit()
             if str(hits[0].__class__.__name__) == "Mob2":
                 self.moneybag += -1
                 sys.exit(0)
