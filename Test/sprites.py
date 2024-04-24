@@ -85,6 +85,7 @@ class Player(pg.sprite.Sprite):
                     self.quit()
                 if event.type == pg.KEYUP:
                     waiting = False
+    
 
     def draw_text(self, surface, text, size, color, x, y):
         font_name = pg.font.match_font('arial')
@@ -101,16 +102,19 @@ class Player(pg.sprite.Sprite):
             if str(hits[0].__class__.__name__) == "Coin":
                 self.moneybag += 1
             if str(hits[0].__class__.__name__) == "Mob":
-                sys.exit()
+                while True:
+                    self.game.show_death_screen()
             if str(hits[0].__class__.__name__) == "Mob2":
-                self.moneybag += -1
-                sys.exit(0)
+                while True:
+                    self.game.show_death_screen()
             if str(hits[0].__class__.__name__) == "PowerUp":
                 print(hits[0].__class__.__name__)
                 self.speed += 300
-            if self.moneybag == 10:
-               sys.exit()
-               print("YOU WON")
+            if self.moneybag == 1:
+               while True:
+                    self.game.show_end_screen()
+
+
 
     def update(self):
         self.get_keys()

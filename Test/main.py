@@ -168,6 +168,19 @@ class Game:
         pg.display.flip()
         self.wait_for_key()
 
+    def show_end_screen(self):
+        self.screen.fill(BGCOLOR)
+        self.draw_text(self.screen, "You Won! - press any X to exit", 24, WHITE, WIDTH/2, HEIGHT/2)
+        pg.display.flip()
+        self.wait_for_key()
+
+    def show_death_screen(self):
+        self.screen.fill(BGCOLOR)
+        self.draw_text(self.screen, "You Died! - press any X to exit", 24, WHITE, WIDTH/2, HEIGHT/2)
+        pg.display.flip()
+        self.wait_for_key()
+        
+
     def wait_for_key(self):
         waiting = True
         while waiting:
