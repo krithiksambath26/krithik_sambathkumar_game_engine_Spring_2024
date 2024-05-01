@@ -1,9 +1,11 @@
 # This file was created by Krithik Sambathkumar 
 
 #Game Goals:
-# 3 Features: Start Screen (DONE) Added graphics (DONE), Coin counter and Timer (Done)
+# 3 Features: Coin Counter (Done), Added graphics (DONE), Coin counter, Timer (Done)
 
 # 8 bit Venom and other enemies chasing player before player collects coins
+
+# 1 Design Goal (BETA): Add working Start, End, and Death screens
 
 
 import pygame as pg
