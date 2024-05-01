@@ -110,7 +110,7 @@ class Player(pg.sprite.Sprite):
             if str(hits[0].__class__.__name__) == "PowerUp":
                 print(hits[0].__class__.__name__)
                 self.speed += 300
-            if self.moneybag == 1:
+            if self.moneybag == 11:
                while True:
                     self.game.show_end_screen()
 
