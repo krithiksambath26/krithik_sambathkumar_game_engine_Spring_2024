@@ -7,6 +7,8 @@
 
 # 1 Design Goal (BETA): Add working Start, End, and Death screens
 
+# Current: Beta Build
+
 
 import pygame as pg
 from settings import *
