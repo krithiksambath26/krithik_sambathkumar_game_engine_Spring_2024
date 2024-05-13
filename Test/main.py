@@ -43,6 +43,22 @@ class Cooldown():
 
 #Class Game
 class Game:
+    def start_new_game(self):
+
+        game_folder = path.dirname(__file__)
+
+        with open(path.join(game_folder, 'map2.txt'), 'rt') as f:
+            for line in f:
+                print(line)
+                self.map_data.append(line)
+
+
+        
+
+        #self.show_start_screen() 
+        #self.new()  
+
+
     def __init__(self):
         pg.init()
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
