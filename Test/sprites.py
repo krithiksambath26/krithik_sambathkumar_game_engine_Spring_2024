@@ -113,7 +113,7 @@ class Player(pg.sprite.Sprite):
             if self.moneybag == 11:
                while True:
                     self.game.show_end_screen()
-            if self.moneybag == 2:
+            if self.moneybag == 5:
                     self.game.start_new_game()
 
 

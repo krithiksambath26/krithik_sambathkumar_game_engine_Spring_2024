@@ -45,17 +45,11 @@ class Cooldown():
 class Game:
     def start_new_game(self):
 
-        game_folder = path.dirname(__file__)
-
-        with open(path.join(game_folder, 'map2.txt'), 'rt') as f:
-            for line in f:
-                print(line)
-                self.map_data.append(line)
-
-
         
+        for s in self.walls:
+            s.kill()
 
-        #self.show_start_screen() 
+        self.show_start_screen() 
         #self.new()  
 
 
