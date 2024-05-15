@@ -49,7 +49,7 @@ class Game:
         for s in self.walls:
             s.kill()
 
-        self.show_start_screen() 
+        #self.show_start_screen() 
         #self.new()  
 
 
@@ -69,6 +69,7 @@ class Game:
         self.mob_img = pg.image.load(path.join(img_folder, 'carnage.png')).convert_alpha()
         self.mob2_img = pg.image.load(path.join(img_folder, 'venom(BIG).png')).convert_alpha()
         self.wall_img = pg.image.load(path.join(img_folder, 'floor4.png')).convert_alpha()
+
         self.coin_img = pg.image.load(path.join(img_folder, 'coin.png')).convert_alpha()
         self.powerup_img = pg.image.load(path.join(img_folder, 'powerup.png')).convert_alpha()
         self.map_data = []
@@ -95,6 +96,8 @@ class Game:
                 if tile == '1':
                     print("a wall at", row, col)
                     Wall(self, col, row)
+                if tile == '2':
+                    Wall2(self,col,row)
                 if tile == 'm':
                     Mob2(self, col, row)
                 if tile == 'P':

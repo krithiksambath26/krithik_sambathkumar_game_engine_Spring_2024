@@ -26,6 +26,9 @@ class Player(pg.sprite.Sprite):
         self.y = y * TILESIZE
         self.moneybag = 0
         self.speed = 300
+        
+     
+
     
     #Player Controls
     def get_keys(self):
@@ -74,6 +77,7 @@ class Player(pg.sprite.Sprite):
                     self.y = hits[0].rect.bottom
                 self.vy = 0
                 self.rect.y = self.y
+     
     
 
     def wait_for_key(self):
@@ -119,19 +123,29 @@ class Player(pg.sprite.Sprite):
 
 
     def update(self):
+ 
         self.get_keys()
         self.x += self.vx * self.game.dt
         self.y += self.vy * self.game.dt
+ 
         self.rect.x = self.x
         # add collision later
         self.collide_with_walls('x')
+        if self.x < 0:
+            self.x = 0
+        elif self.x >= WIDTH:
+            self.x = WIDTH-self.rect.width
         self.rect.y = self.y
         # add collision later
         self.collide_with_walls('y')
+        if self.y < 0:
+            self.y = 0
+        elif self.y >= HEIGHT:
+            self.y = HEIGHT-self.rect.height
         self.collide_with_group(self.game.coins, True)
         self.collide_with_group(self.game.mobs, True)
         self.collide_with_group(self.game.power_ups, True)
-          
+        
         # coin_hits = pg.sprite.spritecollide(self.game.coins, True)
         # if coin_hits:
         #     print("I got a coin")
@@ -210,7 +224,7 @@ class Mob(pg.sprite.Sprite):
         self.vx, self.vy = 100, 100
         self.x = x * TILESIZE
         self.y = y * TILESIZE
-        self.speed = 1
+        self.speed = 5
         
     def collide_with_walls(self, dir):
         if dir == 'x':
